@@ -1,15 +1,15 @@
 from django.conf.urls import patterns, include, url
-from vacay.landing_view import landing
-from vacay.login_view import login
-from vacay.home_view import home
-from vacay.mytrips_view import mytrips
-from vacay.pasttrips_view import pasttrips
-from vacay.futuretrips_view import futuretrips
-from vacay.tripplanning_view import tripplanning
-from vacay.blogging_view import blogging
-from vacay.viewtrip_view import viewtrip
-from vacay.viewpost_view import viewpost
-from vacay.search_view import search
+from vacay.views.landing_view import landing
+from vacay.views.login_view import login
+from vacay.views.home_view import home
+from vacay.views.mytrips_view import mytrips
+from vacay.views.pasttrips_view import pasttrips
+from vacay.views.futuretrips_view import futuretrips
+from vacay.views.tripplanning_view import tripplanning
+from vacay.views.blogging_view import blogging
+from vacay.views.viewtrip_view import viewtrip
+from vacay.views.viewpost_view import viewpost
+from vacay.views.search_view import search
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
