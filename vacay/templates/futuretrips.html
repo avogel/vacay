@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Past Trips
+{% endblock %}
+
+{% block left %}
+{% endblock %}
+
+{% block content %}
+<ul>
+{% for trip in future_trips %}
+<li>
+	{{trip}}
+</li>
+{% endfor %}
+</ul>
+{% endblock %}
+
+{% block right %}
+{% endblock %}

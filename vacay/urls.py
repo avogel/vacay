@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
+from django.contrib.auth.views import login, logout
 from vacay.views.landing_view import landing
-from vacay.views.login_view import login
 from vacay.views.home_view import home
 from vacay.views.mytrips_view import mytrips
 from vacay.views.pasttrips_view import pasttrips
@@ -10,6 +10,8 @@ from vacay.views.blogging_view import blogging
 from vacay.views.viewtrip_view import viewtrip
 from vacay.views.viewpost_view import viewpost
 from vacay.views.search_view import search
+from vacay.views.register_view import register
+#from vacay.views.login_view import login
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -18,7 +20,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
 	('^$',landing),
 	('^landing/$', landing),
-	('^login/$', login),
+	#('^login/$', login),
 	('^home/$', home),
 	('^mytrips/$', mytrips),
 	('^pasttrips/$', pasttrips),
@@ -28,6 +30,10 @@ urlpatterns = patterns('',
 	('^viewtrip/$', viewtrip),
 	('^viewpost/$', viewpost),
 	('^search/$', search),
+	(r'^accounts/login/$',  login),
+    (r'^accounts/logout/$', logout),
+    (r'^registration/register/$', register),
+    (r'^admin/', include(admin.site.urls)),
 
     # Examples:
     # url(r'^$', 'vacay.views.home', name='home'),
