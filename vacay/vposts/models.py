@@ -7,7 +7,6 @@ class Account(models.Model):
     about_me = models.CharField(max_length=1000)
     email = models.EmailField()
 
-
 class Trip(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=500)
@@ -25,3 +24,5 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     contents = models.TextField()
     visited_days = models.ManyToManyField(VisitedDay)
+    date_written = models.DateField()
+    

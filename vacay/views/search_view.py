@@ -4,7 +4,7 @@ from django.http import HttpResponse
 import datetime
 
 def search(request):
-    now = datetime.datetime.now()
+    results = ["stuff", "stuff", "stuff"]
     t = get_template('search.html')
-    html = t.render(Context({'current_date': now}))
+    html = t.render(Context({'results': results}))
     return HttpResponse(html)

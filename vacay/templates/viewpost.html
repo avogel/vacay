@@ -1,1 +1,16 @@
-<html><body>It is now {{ current_date }}.</body></html>
+{% extends "base.html" %}
+
+{% block title %}View Post
+{% endblock %}
+
+{% block left %}
+{% endblock %}
+
+{% block content %}
+<h2>{{post.title}}</h2>
+<p>{{post.date_written}}</p>
+<p>{{post.contents}}</p>
+{% endblock %}
+
+{% block right %}
+{% endblock %}
