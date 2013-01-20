@@ -1,1 +1,16 @@
-<html><body>It is now {{ current_date }}.</body></html>
+{% extends "base.html" %}
+
+{% block title %}View Trip
+{% endblock %}
+
+{% block left %}
+{% endblock %}
+
+{% block content %}
+<h2>{{trip.name}}</h2>
+<p>{{trip.description}}</p>
+<p>-{{trip.account.first_name}}</p>
+{% endblock %}
+
+{% block right %}
+{% endblock %}
