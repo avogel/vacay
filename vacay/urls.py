@@ -1,16 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib.auth.views import login, logout
-from vacay.views.landing_view import landing
-from vacay.views.home_view import home
-from vacay.views.mytrips_view import mytrips
-from vacay.views.pasttrips_view import pasttrips
-from vacay.views.futuretrips_view import futuretrips
-from vacay.views.tripplanning_view import tripplanning
-from vacay.views.blogging_view import blogging
-from vacay.views.viewtrip_view import viewtrip
-from vacay.views.viewpost_view import viewpost
-from vacay.views.search_view import search
-from vacay.views.register_view import register
+from vacay.views import views
 #from vacay.views.login_view import login
 
 # Uncomment the next two lines to enable the admin:
@@ -18,21 +8,21 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-	('^$',landing),
-	('^landing/$', landing),
-	#('^login/$', login),
-	('^home/$', home),
-	('^mytrips/$', mytrips),
-	('^pasttrips/$', pasttrips),
-	('^futuretrips/$', futuretrips),
-	('^tripplanning/$', tripplanning),
-	('^blogging/$', blogging),
-	('^viewtrip/$', viewtrip),
-	('^viewpost/$', viewpost),
-	('^search/$', search),
-	(r'^accounts/login/$',  login),
-    (r'^accounts/logout/$', logout),
-    (r'^registration/register/$', register),
+	(r'^$', views.landing),
+	(r'^landing/$', views.landing),
+	#(r'^login/$', login),
+	(r'^home/$', views.home),
+	(r'^mytrips/$', views.mytrips),
+	(r'^pasttrips/$', views.pasttrips),
+	(r'^futuretrips/$', views.futuretrips),
+	(r'^tripplanning/$', views.tripplanning),
+	(r'^blogging/$', views.blogging),
+	(r'^viewtrip/(?P<id>\d+)/$', views.viewtrip),
+	(r'^viewpost/(?P<id>\d+)/$', views.viewpost),
+	(r'^search/(?P<query>\w+)/$', views.search),
+	(r'^accounts/login/$', login),
+    (r'^accounts/logout/$', logout, {'template_name' :'landing.html'}),
+    (r'^registration/register/$', views.register),
     (r'^admin/', include(admin.site.urls)),
 
     # Examples:
