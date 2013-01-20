@@ -1,10 +1,12 @@
 from django.template.loader import get_template
-from django.template import Context
-from django.http import HttpResponse
-import datetime
+from django.http import Http404
+from vacay.vposts.models import Trip
+from django.shortcuts import render_to_response
 
-def viewtrip(request):
-    now = datetime.datetime.now()
-    t = get_template('viewtrip.html')
-    html = t.render(Context({'current_date': now}))
-    return HttpResponse(html)
+def viewtrip(request, id):
+	try:
+		id = int(id)
+	except ValueError:
+		raise Http404()
+	trip = Trip.objects.get(id=id)
+	return render_to_response('viewtrip.html', {'trip' : trip})
