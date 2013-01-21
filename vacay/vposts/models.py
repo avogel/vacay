@@ -12,7 +12,6 @@ class Trip(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=500)
     is_completed = models.BooleanField()
-    account = models.ForeignKey(Account)
     user = models.ForeignKey(User)
 
     def __unicode__(self):
@@ -29,15 +28,16 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     contents = models.TextField()
     date_written = models.DateField()
+    likes = models.ManyToManyField(User, related_name='likes')
 
     def __unicode__(self):
         return self.title
 
 class VisitedDay(models.Model):
     date = models.DateField()
-    visited_cities = models.ManyToManyField(VisitedCity)
+    visited_city = models.ForeignKey(VisitedCity)
     written_posts = models.ManyToManyField(Post, related_name='written_posts')
-    ideas = models.ManyToManyField(Post, related_name = 'ideas')
+    ideas = models.ManyToManyField(Post, related_name='ideas')
 
     def __unicode__(self):
-        return self.date + " for " self.visited_cities[0]
+        return str(self.date) + " for " + str(self.visited_cities.all()[0])

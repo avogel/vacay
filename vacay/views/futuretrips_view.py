@@ -8,5 +8,5 @@ from vacay.vposts.models import Trip
 @login_required
 def futuretrips(request):
 	user = request.user
-	future_trips = Trip.objects.filter(user=user, is_completed=True)
+	future_trips = Trip.objects.filter(user=user, is_completed=False)
 	return render_to_response('futuretrips.html', {'future_trips': future_trips})
