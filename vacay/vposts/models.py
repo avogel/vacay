@@ -22,16 +22,22 @@ class VisitedCity(models.Model):
     city_name = models.CharField(max_length=50)
     trip = models.ForeignKey(Trip)
 
-class VisitedDay(models.Model):
-    date = models.DateField()
-    visited_cities = models.ManyToManyField(VisitedCity)
+    def __unicode__(self):
+        return self.city_name + " for trip " + self.trip.name
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
     contents = models.TextField()
-    visited_days = models.ManyToManyField(VisitedDay)
     date_written = models.DateField()
 
     def __unicode__(self):
         return self.title
-    
+
+class VisitedDay(models.Model):
+    date = models.DateField()
+    visited_cities = models.ManyToManyField(VisitedCity)
+    written_posts = models.ManyToManyField(Post, related_name='written_posts')
+    ideas = models.ManyToManyField(Post, related_name = 'ideas')
+
+    def __unicode__(self):
+        return self.date + " for " self.visited_cities[0]
