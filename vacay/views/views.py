@@ -9,3 +9,4 @@ from vacay.views.viewtrip_view import viewtrip
 from vacay.views.viewpost_view import viewpost
 from vacay.views.search_view import search
 from vacay.views.register_view import register
+from vacay.views.search_view import emptysearch
