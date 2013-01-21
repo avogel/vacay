@@ -426,6 +426,7 @@ a:hover {
 .row-fluid .span12 {
   width: 100%;
   *width: 99.94680851063829%;
+  text-align: center;
 }
 
 .row-fluid .span11 {
