@@ -10,7 +10,7 @@
 <ul>
 {% for trip in past_trips %}
 <li>
-	{{trip}}
+	<a href="/viewtrip/{{trip.id}}">{{trip}}</a>
 </li>
 {% endfor %}
 </ul>

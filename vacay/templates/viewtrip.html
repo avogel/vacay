@@ -1,15 +1,13 @@
-{% extends "base.html" %}
+{% extends "tripbase.html" %}
 
 {% block title %}View Trip
 {% endblock %}
 
-{% block left %}
-{% endblock %}
 
 {% block content %}
 <h2>{{trip.name}}</h2>
 <p>{{trip.description}}</p>
-<p>-{{trip.account.first_name}}</p>
+<p>{{trip.user.username}}</p>
 {% endblock %}
 
 {% block right %}
