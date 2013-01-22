@@ -1,7 +1,8 @@
 from django.template.loader import get_template
 from django.template import Context
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.db.models import Q
+from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response
 from vacay.vposts.models import Post
 
@@ -15,6 +16,7 @@ def search(request, query):
 
 def emptysearch(request):
     if 'query' in request.GET:
-    	return search(request,request.GET['query'])
+    	query = request.GET['query']
+    	return HttpResponseRedirect(reverse('vacay.views.search_view.search', args=(query,)))
     else:
         return search(request,"")
