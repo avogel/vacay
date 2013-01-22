@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block left %}
+<div class="container-fluid">  
+	<div class="accordion" id="accordion2">
+		{% for city, day in days.iteritems %}
+		<div class="accordion-group">  
+			<div class="accordion-heading">  
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse{{city.city_name}}">  
+					{{city.city_name}}  
+				</a>  
+			</div>
+			<div id="collapse{{city.city_name}}" class="accordion-body collapse" style="height: 0px; ">  
+			{% for d in day%}
+				<div class="accordion-inner">  
+					{{d.date}}
+				</div>  
+			{% endfor %}  
+			</div>
+		</div>
+		{% endfor %}
+	</div>  
+</div>
+{% endblock %}
