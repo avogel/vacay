@@ -40,4 +40,4 @@ class VisitedDay(models.Model):
     ideas = models.ManyToManyField(Post, related_name='ideas')
 
     def __unicode__(self):
-        return str(self.date) + " for " + str(self.visited_cities.all()[0])
+        return str(self.date) + " for " + str(self.visited_city)
