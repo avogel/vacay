@@ -1,6 +1,6 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
 @login_required
 def blogging(request):
-    return render_to_response('blogging.html', {})
+    return render(request, 'blogging.html', {})

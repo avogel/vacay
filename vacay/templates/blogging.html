@@ -1,4 +1,4 @@
-{% extends "blog_base.html" %}
+{% extends "sidebar.html" %}
 
 {% block title %}Blog about your trip!{% endblock %}
 
@@ -9,7 +9,7 @@
 <div class="input">
 	<textarea class="span12" id="textarea" name="textarea" rows="20"></textarea>
 	<span class="help-block">
-		Block of help text to describe the field above if need be.
+		Block of help text to describe the field above if need be. {{request.STATIC_URL}}
 	</span>
     <button type="submit" class="btn btn-inverse">Submit</button>
 </div>

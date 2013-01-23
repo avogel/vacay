@@ -1,5 +1,5 @@
 from django.template.loader import get_template
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.http import Http404
 import datetime
 from django.contrib.auth.decorators import login_required
@@ -9,4 +9,4 @@ from vacay.vposts.models import Trip
 def futuretrips(request):
 	user = request.user
 	future_trips = Trip.objects.filter(user=user, is_completed=False)
-	return render_to_response('futuretrips.html', {'future_trips': future_trips})
+	return render(request, 'futuretrips.html', {'future_trips': future_trips})

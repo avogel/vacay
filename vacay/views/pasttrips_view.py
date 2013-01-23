@@ -1,7 +1,4 @@
-from django.template.loader import get_template
-from django.http import Http404
-from django.shortcuts import render_to_response
-import datetime
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from vacay.vposts.models import Trip
 
@@ -9,4 +6,4 @@ from vacay.vposts.models import Trip
 def pasttrips(request):
 	user = request.user
 	past_trips = Trip.objects.filter(user=user, is_completed=True)
-	return render_to_response('pasttrips.html', {'past_trips': past_trips})
+	return render(request, 'pasttrips.html', {'past_trips': past_trips})
