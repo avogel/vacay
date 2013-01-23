@@ -32,7 +32,7 @@
     </script>
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#side-scroll-nav">
     <div class="container-fluid">
       <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
@@ -77,10 +77,10 @@
           <div class="span2">
             {% block left %}{% endblock %}
           </div>
-          <div class="span8">
+          <div class="span{% block center_width %}{% endblock %}">
             <div>{% block content %}{% endblock %}</div>
           </div>
-          <div class="span2">
+          <div class="span{% block right_width %}{% endblock %}">
             {% block right %}{% endblock %}
           </div>
         </div>

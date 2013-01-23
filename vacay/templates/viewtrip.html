@@ -4,11 +4,9 @@
 {% endblock %}
 
 
-{% block content %}
-<h2>{{trip.name}}</h2>
-<p>{{trip.description}}</p>
-<p>{{trip.user.username}}</p>
-{% endblock %}
-
-{% block right %}
+{% block post %}
+{% for post in day.written_posts.all %}
+<h4>{{post.title}}</h4>
+<p>{{post.contents}}</p>
+{% endfor %}
 {% endblock %}
