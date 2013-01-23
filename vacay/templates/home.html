@@ -6,9 +6,9 @@
 {% block left %}
 <div class="well sidebar-nav">
 	<ul class="nav nav-list">
-		<li><a href="/mytrips/"> My Trips </a></li>
-		<li><a href="/pasttrips/"> Past Trips </a></li>
-		<li><a href="/futuretrips/"> Future Trips </a></li>
+		<li><a href="/vacay/mytrips/"> My Trips </a></li>
+		<li><a href="/vacay/pasttrips/"> Past Trips </a></li>
+		<li><a href="/vacay/futuretrips/"> Future Trips </a></li>
 	</ul>
 </div>
 
@@ -16,7 +16,7 @@
 
 {% block content %}
 <div class="span12">
-	<form action="/search/" class="navbar-search pull-left">
+	<form action="/vacay/search/" class="navbar-search pull-left">
   		<i class="icon-search"></i><input type="text" class="search-query" placeholder="Search" name="query">
   		<button type="submit" class="btn">Search</button>
 	</form>
@@ -25,5 +25,4 @@
 {% endblock %}
 
 {% block right %}
-<a href="/accounts/logout/"> logout </a>
 {% endblock %}

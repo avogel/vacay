@@ -1,1 +1,17 @@
-<html><body>It is now {{ current_date }}.</body></html>
+{% extends "blog_base.html" %}
+
+{% block title %}Blog about your trip!{% endblock %}
+
+{% block center_width %}5{% endblock %}
+{% block right_width %}5{% endblock %}
+{% block right %}
+
+<div class="input">
+	<textarea class="span12" id="textarea" name="textarea" rows="20"></textarea>
+	<span class="help-block">
+		Block of help text to describe the field above if need be.
+	</span>
+    <button type="submit" class="btn btn-inverse">Submit</button>
+</div>
+
+{% endblock %}
