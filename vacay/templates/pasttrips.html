@@ -14,6 +14,40 @@
 </li>
 {% endfor %}
 </ul>
+
+<script type="text/javascript">
+
+// xmlhttp = new XmlHttpRequest();
+// xmlhttp.onreadystatechange=function() {
+//     document.getElementById("num").innerHTML=xmlhttp.responseXML.documentElement.getElementsByTagName("num")
+//   }
+// xmlhttp.open("GET","ajax_info.txt",true);
+// xmlhttp.send('/vacay/viewtrip/{{trip.id}}/');
+
+// $('#form').submit(function(e){
+//     $.post('/vacay/viewtrip/{{trip.id}}/', 
+//     	$(this).serialize(), 
+//     	function(data){ 
+//        $('#num').text(data.num);
+//        // of course you can do something more fancy with your respone
+//     });
+//     e.preventDefault();
+// });
+function my_js_callback(data){
+    alert(data.message);
+}
+
+</script>
+
+<form id ="form" method="post">{% csrf_token %}
+    <input type="text" name="num" />
+    <input type="submit" value="Submit" onclick="Dajaxice.example.sayhello(my_js_callback);"/>
+</form>
+
+<p id="num"></p>
+
+
+
 {% endblock %}
 
 {% block right %}

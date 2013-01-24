@@ -1,24 +1,22 @@
-{% extends "base.html" %}
+{% extends "sidebar.html" %}
 
-{% block left %}
-<div class="container-fluid">  
-	<div class="accordion" id="accordion2">
-		{% for city, day in days.iteritems %}
-		<div class="accordion-group">  
-			<div class="accordion-heading">  
-				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse{{city.city_name}}">  
-					{{city.city_name}}  
-				</a>  
-			</div>
-			<div id="collapse{{city.city_name}}" class="accordion-body collapse" style="height: 0px; ">  
-			{% for d in day%}
-				<div class="accordion-inner">  
-					{{d.date}}
-				</div>  
-			{% endfor %}  
-			</div>
-		</div>
+{% block center_width %}8{% endblock %}
+{% block right_width %}2{% endblock %}
+
+{% block content %}
+<div data-spy="scroll" data-target=".well .nav .nav-list .affix" class="post-content">
+	{% for city, daylist in days.iteritems %}
+	<section id="{{city.id}}">
+		<h2>{{city.city_name}}</h2>
+	</section>
+	{% for day in daylist %}
+	<section id="{{city.id}}_{{day.id}}">
+		{% for p in day.written_posts.all %}
+		{% block post %}
+		{% endblock %}
 		{% endfor %}
-	</div>  
+	</section>
+	{% endfor %}
+	{% endfor %}
 </div>
 {% endblock %}

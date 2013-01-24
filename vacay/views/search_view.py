@@ -15,8 +15,12 @@ def search(request, query):
 	return render_to_response('search.html', {'results': results})
 
 def emptysearch(request):
-    if 'query' in request.GET:
+    if 'query' not in request.GET:
+    	return search(request,"")
+    elif not request.GET['query'] == "":
     	query = request.GET['query']
     	return HttpResponseRedirect(reverse('vacay.views.search_view.search', args=(query,)))
     else:
-        return search(request,"")
+    	return HttpResponseRedirect('/vacay/search/')
+    
+        

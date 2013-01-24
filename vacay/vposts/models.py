@@ -8,22 +8,6 @@ class Account(models.Model):
     about_me = models.CharField(max_length=1000)
     email = models.EmailField()
 
-class Trip(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.CharField(max_length=500)
-    is_completed = models.BooleanField()
-    user = models.ForeignKey(User)
-
-    def __unicode__(self):
-        return self.name + " for user " + self.user.username
-
-class VisitedCity(models.Model):
-    city_name = models.CharField(max_length=50)
-    trip = models.ForeignKey(Trip)
-
-    def __unicode__(self):
-        return self.city_name + " for trip " + self.trip.name
-
 class Post(models.Model):
     title = models.CharField(max_length=200)
     contents = models.TextField()
@@ -32,6 +16,24 @@ class Post(models.Model):
 
     def __unicode__(self):
         return self.title
+
+class Trip(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.CharField(max_length=500)
+    is_completed = models.BooleanField()
+    user = models.ForeignKey(User)
+    ideas = models.ManyToManyField(Post, related_name="trip_ideas")
+
+    def __unicode__(self):
+        return self.name + " for user " + self.user.username
+
+class VisitedCity(models.Model):
+    city_name = models.CharField(max_length=50)
+    trip = models.ForeignKey(Trip)
+    ideas = models.ManyToManyField(Post, related_name="city_ideas")
+
+    def __unicode__(self):
+        return self.city_name + " for trip " + self.trip.name
 
 class VisitedDay(models.Model):
     date = models.DateField()

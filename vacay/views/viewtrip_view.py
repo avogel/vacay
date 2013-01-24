@@ -1,7 +1,7 @@
 from django.template.loader import get_template
 from django.http import Http404
 from vacay.vposts.models import *
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 
 def viewtrip(request, id):
 	try:
@@ -12,5 +12,6 @@ def viewtrip(request, id):
 	cities = VisitedCity.objects.filter(trip=trip)
 	days = {}
 	for city in cities:
-		days[city] = VisitedDay.objects.filter(visited_city=city)
-	return render_to_response('viewtrip.html', {'trip' : trip,'cities' : cities, 'days':days})
+		ds = VisitedDay.objects.filter(visited_city=city)
+		days[city]=ds
+	return render(request, 'viewtrip.html', {'trip' : trip,'cities' : cities, 'days':days})
