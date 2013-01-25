@@ -8,9 +8,80 @@
 
 {% block content %}
 <div class="blog_view">
-<h2>{{post.title}}</h2>
-<p>{{post.date_written}}</p>
-<p>{{post.contents}}</p>
+	<h2>{{post.title}}</h2>
+	<div class="btn-group pull-right">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+			<i class="icon-bookmark"></i>
+			<span class="caret"></span>
+		</a>
+		<ul class="dropdown-menu">
+			{% for trip, city_list in cities.iteritems %}
+			<li class="dropdown-submenu pull-left"><a href="#">{{trip.name}}</a>
+				<ul class="dropdown-menu">
+					{% for city in city_list %}
+						<li><h href="#">{{city.city_name}}</a></li>
+					{% endfor %}
+				</ul>
+			</li>
+			
+			<li class="divider"></li>
+			
+			{% endfor %}
+		</ul>
+		<!--
+		<a id="bookmark" class="btn" rel="popover" data-placement="left">
+			
+		</a>
+		
+		<div class="popover fade bottom in">
+			<div class="arrow"></div>
+			<div class="popover-inner">
+				<h3 class="popover-title">Bookmark this post to a specific trip, city or day.
+				</h3>
+				<div class="popover-content">
+				</div>
+			</div>
+		</div>
+	-->
+	</div>
+	<script>  
+	$(function ()  
+		{ $("#bookmark").popover({
+			html : true,
+			title: '<div class="btn-group">
+			<a class="btn" href="#">1</a>
+			<p>test</p>
+			</div>'
+
+			,
+			content: '{% for trip in trips %}{{trip.name}}</br>{% endfor %}'
+			});  
+	});  
+	</script>  
+		<!--
+		<div class="btn-group">
+  <button class="btn">1</button>
+  <button class="btn">2</button>
+  <button class="btn">3</button>
+</div>
+		<ul class="dropdown-menu">
+			{% for trip, city_list in cities.iteritems %}
+			<li class="dropdown-submenu pull-left"><a href="#">{{trip.name}}</a>
+				<ul class="dropdown-menu">
+					{% for city in city_list %}
+						<li><h href="#">{{city.city_name}}</a></li>
+					{% endfor %}
+				</ul>
+			</li>
+			
+			<li class="divider"></li>
+			<li><a href="#">Separated link</a></li>
+			
+			{% endfor %}
+		</ul>-->
+
+	<p>{{post.date_written}}</p>
+	<p>{{post.contents}}</p>
 </div>
 {% endblock %}
 

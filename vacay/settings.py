@@ -58,6 +58,7 @@ MEDIA_URL = ''
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
 STATIC_ROOT = os.path.join(os.path.dirname(__file__)).replace('\\','/')
+#print os.path.join(os.path.dirname(__file__).replace('\\','/')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -78,6 +79,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #'dajaxice.finders.DajaxiceFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -87,7 +89,7 @@ SECRET_KEY = 'uvbe($yu*=tpl^hl8jqw14cpd_h@14qm^f7cgsipq%n7uup99&amp;'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    #'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -133,7 +135,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    'vacay.vposts'
+    'vacay.vposts',
+    #'dajaxice',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -162,6 +165,12 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
+        #'dajaxice': {
+        #    'handlers': ['console'],
+        #    'level': 'INFO',
+        #    'propagate': True,
+        #},
     }
+
 }
 
