@@ -15,4 +15,4 @@ def pasttrips(request):
 	# 	return HttpResponse(json.dumps({'num':num}))
 
 	past_trips = Trip.objects.filter(user=user, is_completed=True)
-	return render_to_response('pasttrips.html', {'past_trips': past_trips})
+	return render(request, 'pasttrips.html', {'past_trips': past_trips})

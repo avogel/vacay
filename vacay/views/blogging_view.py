@@ -38,3 +38,4 @@ def blogging(request, id):
 						'days':days,
 						'form': form,
 						'selected_date' : selected_date})
+

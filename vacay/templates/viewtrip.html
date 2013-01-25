@@ -3,11 +3,12 @@
 {% block title %}View Trip
 {% endblock %}
 
+{% block center_width %}8{% endblock %}
+{% block right_width %}2{% endblock %}
 
 {% block post %}
-<h4>{{p.title}}</h4>
-<p>{{p.contents}}</p>
-{% endblock %}
-
-{% block right %}
+{% for post in day.written_posts.all %}
+<h4>{{post.title}}</h4>
+<p>{{post.contents}}</p>
+{% endfor %}
 {% endblock %}

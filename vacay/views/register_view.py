@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.template import RequestContext
 
 def register(request):
@@ -12,6 +12,6 @@ def register(request):
             return HttpResponseRedirect("/home/")
     else:
         form = UserCreationForm()
-    return render_to_response("registration/register.html", {
+    return render(request, "registration/register.html", {
         'form': form,},
         context_instance=RequestContext(request))

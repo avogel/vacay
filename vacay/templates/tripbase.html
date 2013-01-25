@@ -11,10 +11,8 @@
 	</section>
 	{% for day in daylist %}
 	<section id="{{city.id}}_{{day.id}}">
-		{% for p in day.written_posts.all %}
 		{% block post %}
 		{% endblock %}
-		{% endfor %}
 	</section>
 	{% endfor %}
 	{% endfor %}

@@ -103,7 +103,13 @@ MIDDLEWARE_CLASSES = (
 
 BASE_URL = ''
 
+SUB_SITE = "vacay/"
+
 ROOT_URLCONF = 'vacay.urls'
+
+LOGIN_URL = '/vacay/accounts/login/'
+
+LOGOUT_URL = '/vacay/accounts/logout/'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'vacay.wsgi.application'

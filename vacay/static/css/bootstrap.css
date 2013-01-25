@@ -87,6 +87,9 @@ textarea {
   margin: 0;
   font-size: 100%;
   vertical-align: middle;
+  text-align: left;
+  resize: vertical;
+  max-height: 700px;
 }
 
 button,
