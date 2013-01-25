@@ -15,11 +15,17 @@
 			<span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
-			{% for trip, city_list in cities.iteritems %}
+			{% for trip, city_list, day_list in output.iteritems %}
 			<li class="dropdown-submenu pull-left"><a href="#">{{trip.name}}</a>
 				<ul class="dropdown-menu">
 					{% for city in city_list %}
-						<li><h href="#">{{city.city_name}}</a></li>
+					<li class="dropdown-submenu pull-left"><a href="#">{{city.city_name}}</a>
+						<ul class="dropdown-menu">
+							{% for day in city.visited_days.all %}
+								<li><a href="#">{{day.date}}</a></li>
+							{% endfor %}
+						</ul>
+					</li>
 					{% endfor %}
 				</ul>
 			</li>
