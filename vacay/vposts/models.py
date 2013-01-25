@@ -37,7 +37,7 @@ class VisitedCity(models.Model):
 
 class VisitedDay(models.Model):
     date = models.DateField()
-    visited_city = models.ForeignKey(VisitedCity)
+    visited_city = models.ForeignKey(VisitedCity, related_name='visited_days')
     written_posts = models.ManyToManyField(Post, related_name='written_posts')
     ideas = models.ManyToManyField(Post, related_name='ideas')
 
