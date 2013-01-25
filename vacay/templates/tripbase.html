@@ -9,12 +9,13 @@
 	<section id="{{city.id}}">
 		<h2>{{city.city_name}}</h2>
 	</section>
-	{% for day in daylist %}
-	<section id="{{city.id}}_{{day.id}}">
-		{% block post %}
-		{% endblock %}
-	</section>
-	{% endfor %}
+		{% for day in daylist %}
+		<section id="{{city.id}}_{{day.id}}">
+			{% block post %}
+			{% endblock %}
+		</section>
+		{% endfor %}
+	<!--</section> -->
 	{% endfor %}
 </div>
 {% endblock %}

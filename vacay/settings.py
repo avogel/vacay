@@ -58,6 +58,7 @@ MEDIA_URL = ''
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
 STATIC_ROOT = os.path.join(os.path.dirname(__file__)).replace('\\','/')
+#print os.path.join(os.path.dirname(__file__).replace('\\','/')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -145,7 +146,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    'vacay.vposts'
+    'vacay.vposts',
+    #'dajaxice',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -193,5 +195,6 @@ LOGGING = {
             'propagate': True,
         },
     }
+
 }
 
