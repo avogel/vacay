@@ -16,9 +16,9 @@ def search(request, query):
 
 def emptysearch(request):
     if 'query' not in request.GET:
-    	return search(request, "")
+    	return search(request,"")
     elif not request.GET['query'] == '':
     	query = request.GET['query']
     	return HttpResponseRedirect('/vacay/search/%s/' % query)
     else:
-        return HttpResponseRedirect('/vacay/search/')
+    	return HttpResponseRedirect('/vacay/search/')
