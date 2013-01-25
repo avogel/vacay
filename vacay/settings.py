@@ -79,7 +79,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
-    'dajaxice.finders.DajaxiceFinder',
+#    'dajaxice.finders.DajaxiceFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -89,7 +89,7 @@ SECRET_KEY = 'uvbe($yu*=tpl^hl8jqw14cpd_h@14qm^f7cgsipq%n7uup99&amp;'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-    'django.template.loaders.eggs.Loader',
+#    'django.template.loaders.eggs.Loader',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -137,7 +137,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
-    'dajaxice',
+#    'dajaxice',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
@@ -189,11 +189,11 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
-        'dajaxice': {
-            'handlers': ['console'],
-            'level': 'INFO',
-            'propagate': True,
-        },
+        # 'dajaxice': {
+        #     'handlers': ['console'],
+        #     'level': 'INFO',
+        #     'propagate': True,
+        # },
     }
 
 }
