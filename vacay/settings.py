@@ -1,6 +1,6 @@
 # Django settings for vacay project.
 import os.path
-#import dj_database_url
+import dj_database_url
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
