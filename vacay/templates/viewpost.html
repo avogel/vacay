@@ -3,26 +3,43 @@
 {% block title %}View Post
 {% endblock %}
 
+{% block extrahead %}
+<script type="text/javascript">
+
+function bookmark(type_var, id_var) {
+	//$(document).ready(function() {
+		$(document).ready(function(){
+		    $.ajax("/viewpost/{{ post_id }}/", {
+
+		    	type: "POST",
+		    	data: {type: type_var, id: id_var, csrfmiddlewaretoken: '{{ csrf_token }}' },
+		    	}
+		    );
+	    });
+	//});
+}
+</script>
+{% endblock %}
+
 {% block left %}
 {% endblock %}
 
 {% block content %}
 <div class="blog_view">
-	<h2>{{post.title}}</h2>
-	<div class="btn-group pull-right">
+		<div class="btn-group pull-right">
 		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 			<i class="icon-bookmark"></i>
 			<span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
 			{% for trip, city_list, day_list in output.iteritems %}
-			<li class="dropdown-submenu pull-left"><a href="#">{{trip.name}}</a>
+			<li class="dropdown-submenu pull-left"><a href="#" onclick="bookmark('trip', {{trip.id}}); return false;">{{trip.name}}</a>
 				<ul class="dropdown-menu">
 					{% for city in city_list %}
-					<li class="dropdown-submenu pull-left"><a href="#">{{city.city_name}}</a>
+					<li class="dropdown-submenu pull-left"><a href="#" onclick="bookmark('city', {{city.id}}); return false;">{{city.city_name}}</a>
 						<ul class="dropdown-menu">
 							{% for day in city.visited_days.all %}
-								<li><a href="#">{{day.date}}</a></li>
+								<li><a href="#" onclick="bookmark('day', {{day.id}}); return false;">{{day.date}}</a></li>
 							{% endfor %}
 						</ul>
 					</li>
@@ -50,6 +67,8 @@
 		</div>
 	-->
 	</div>
+	<h2>{{post.title}}</h2>
+
 	<script>  
 	$(function ()  
 		{ $("#bookmark").popover({

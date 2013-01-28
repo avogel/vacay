@@ -9,13 +9,10 @@ from vacay.forms import TestForm
 def pasttrips(request):
 	user = request.user
 	if request.method == 'POST':
-		print "got to pasttrips"
 		form = TestForm(request.POST)
-		num = "did not work"
 		if form.is_valid():
 			num = request.POST['num']
-		print num
-		return HttpResponse(simplejson.dumps({'num' : num, 'y': 1000}))
+		return HttpResponse(simplejson.dumps({'num' : num, 'y':y}))
 
 	past_trips = Trip.objects.filter(user=user, is_completed=True)
 	return render(request, 'pasttrips.html', {'past_trips': past_trips})

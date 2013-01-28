@@ -26,12 +26,11 @@
 
 $(document).ready(function() {
 	$('#form').submit(function(e){
-	    $.post('/vacay/pasttrips/', 
-	    	$(this).serialize(), 
+	    $.post('/pasttrips/',
+	    	$(this).serialize(),
 	    	function(data){
 	    		$('#num').text(data);
-	    		var x = JSON.parse(data)
-	    		alert(x.y)
+	    		var x = JSON.parse(data);
 	       	// of course you can do something more fancy with your respone
 	    	});
 	    e.preventDefault();
