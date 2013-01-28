@@ -7,7 +7,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 #dajaxice_autodiscover()
 
 urlpatterns = patterns('',
-	(r'vacay/', include('vacay.vacay_urls')),
+	(r'', include('vacay.vacay_urls')),
 	#url(dajaxice_config.dajaxice_url, include('dajaxice.urls')),
 )
 #urlpatterns += staticfiles_urlpatterns()
