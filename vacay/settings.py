@@ -1,5 +1,6 @@
 # Django settings for vacay project.
 import os.path
+import dj_database_url
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -10,17 +11,19 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-       'ENGINE': 'django.db.backends.postgresql_psycopg2',
+DATABASES['default'] =  dj_database_url.config()
+
+#DATABASES = {
+#    'default': {
+#       'ENGINE': 'django.db.backends.postgresql_psycopg2',
        # 'ENGINE': 'django.db.backends.mysql',
        # 'NAME': 'prestont+vacay',
        # 'USER': 'prestont',
        # 'PASSWORD': 'hib97xug',
        # 'HOST': 'sql.mit.edu',
        # 'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-    }
-}
+#    }
+#}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
