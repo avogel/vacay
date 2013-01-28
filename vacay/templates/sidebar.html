@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block left %}
-<div class="side-scroll-nav">
+<div id="side-scroll-nav" class="visible-desktop side-scroll-nav">
 	<ul data-spy="affix" data-target="post-content" class="well nav nav-list affix">
 		{% for city, day in days.iteritems %}
 			<!--{% if forloop.first %}class="active"{% endif %}-->

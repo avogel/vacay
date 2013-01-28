@@ -8,6 +8,7 @@
 {% block content %}
 <div data-spy="scroll" data-target=".well .nav .nav-list .affix" class="post-content">
 	<h1>Ideas for:</h1>
+	<h2> {{trip.name}}</h2>
 	{% for post in trip.ideas.all %}
 	<h4>{{post.title}}</h4>
 	<h5> Bookmarked to {{trip.name}}</h5>
@@ -46,10 +47,10 @@
 <div class="span4" data-spy="affix">
 <form action="" method="post">  {% csrf_token %}
 	<div class="input">
-		<h3>Title:</h3>
+		<h4>Title:</h4>
 		{{ form.title.errors }}
 		<input class="span12" id="id_title" type="text" name="title" {% if not form.title.value == None %}value="{{form.title.value}}"{% endif %} maxlength="200">
-		<h3>Contents:</h3>
+		<h4>Contents:</h4>
 		{{ form.contents.errors }}
 		<textarea class="span12" id="id_contents" name="contents" rows="20">{% if not form.contents.value == None %}{{form.contents.value}}{% endif %}</textarea>
 		<span class="help-block">
