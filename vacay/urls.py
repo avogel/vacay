@@ -10,7 +10,7 @@ print os.path.join(os.path.dirname(__file__)).replace('\\','/')
 #dajaxice_autodiscover()
 
 urlpatterns = patterns('',
-	(r'vacay/', include('vacay.vacay_urls')),
+	(r'', include('vacay.vacay_urls')),
 	#url(dajaxice_config.dajaxice_url, include('dajaxice.urls')),
 )
 #urlpatterns += staticfiles_urlpatterns()
