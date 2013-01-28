@@ -14,7 +14,7 @@ MANAGERS = ADMINS
 
 
 DATABASES = {
-    'default': {
+#    'default': {
 #       'ENGINE': 'django.db.backends.postgresql_psycopg2',
        # 'ENGINE': 'django.db.backends.mysql',
        # 'NAME': 'prestont+vacay',
@@ -22,7 +22,7 @@ DATABASES = {
        # 'PASSWORD': 'hib97xug',
        # 'HOST': 'sql.mit.edu',
        # 'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-    }
+#    }
 }
 
 # Local time zone for this installation. Choices can be found here:
@@ -118,13 +118,13 @@ MIDDLEWARE_CLASSES = (
 
 BASE_URL = ''
 
-SUB_SITE = "vacay/"
+SUB_SITE = ""
 
 ROOT_URLCONF = 'vacay.urls'
 
-LOGIN_URL = '/vacay/accounts/login/'
+LOGIN_URL = '/accounts/login/'
 
-LOGOUT_URL = '/vacay/accounts/logout/'
+LOGOUT_URL = '/accounts/logout/'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'vacay.wsgi.application'
