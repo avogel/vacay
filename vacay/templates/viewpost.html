@@ -9,7 +9,7 @@
 function bookmark(type_var, id_var) {
 	//$(document).ready(function() {
 		$(document).ready(function(){
-		    $.ajax("/vacay/viewpost/31/", {
+		    $.ajax("/viewpost/{{ post_id }}/", {
 
 		    	type: "POST",
 		    	data: {type: type_var, id: id_var, csrfmiddlewaretoken: '{{ csrf_token }}' },

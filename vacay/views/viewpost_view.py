@@ -19,16 +19,16 @@ def viewpost(request, id):
 		bookmark_id = request.POST["id"]
 		if type == 'trip':
 			trip = Trip.objects.get(id=bookmark_id)
-			if not trip.ideas.contains(post):
-				trip.ideas.add(post)
+			trip.ideas.add(post)
+			trip.save()
 		elif type == 'city':
 			city = VisitedCity.objects.get(id=bookmark_id)
-			if not city.ideas.contains(post):
-				city.ideas.add(post)
+			city.ideas.add(post)
+			city.save()
 		else:
 			day = VisitedDay.objects.get(id=bookmark_id)
-			if not day.ideas.contains(post):
-				day.ideas.add(post)
+			day.ideas.add(post)
+			day.save()
 		return HttpResponse(simplejson.dumps())
 	if user.is_authenticated():
 		trips = Trip.objects.filter(user=user)
@@ -43,4 +43,4 @@ def viewpost(request, id):
 				#days[city]=ds
 				output[trip][city]=VisitedDay.objects.filter(visited_city=city)
 
-	return render(request, 'viewpost.html', {'post' : post,'trips':trips,'cities':cities, 'output':output})
+	return render(request, 'viewpost.html', {'post' : post,'trips':trips,'cities':cities, 'output':output, 'post_id':id})

@@ -26,7 +26,7 @@
 
 $(document).ready(function() {
 	$('#form').submit(function(e){
-	    $.post('/vacay/pasttrips/',
+	    $.post('/pasttrips/',
 	    	$(this).serialize(),
 	    	function(data){
 	    		$('#num').text(data);
