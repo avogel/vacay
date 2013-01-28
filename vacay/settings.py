@@ -178,6 +178,6 @@ LOGGING = {
 
 }
 
-DATABASE_URL = postgres://jnhqfgkyikdexw:QGI_HLRWGIGKpLgM3rYPLXitm4@ec2-54-243-193-133.compute-1.amazonaws.com:5432/davi6huvl5i46a
+DATABASE_URL = 'postgres://jnhqfgkyikdexw:QGI_HLRWGIGKpLgM3rYPLXitm4@ec2-54-243-193-133.compute-1.amazonaws.com:5432/davi6huvl5i46a'
 
 DATABASES['default'] =  dj_database_url.config()
