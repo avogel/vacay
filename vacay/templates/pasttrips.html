@@ -14,12 +14,45 @@
 </li>
 {% endfor %}
 </ul>
-<input type="submit" onclick="Dajaxice.example.sayhello(my_js_callback);">
+
 <script>
-function my_js_callback(data){
-	alert(data.message);
-}
+
+// xmlhttp = new XmlHttpRequest();
+// xmlhttp.onreadystatechange=function() {
+//     document.getElementById("num").innerHTML=xmlhttp.responseXML.documentElement.getElementsByTagName("num")
+//   }
+// xmlhttp.open("GET","ajax_info.txt",true);
+// xmlhttp.send('/vacay/viewtrip/{{trip.id}}/');
+
+$(document).ready(function() {
+	$('#form').submit(function(e){
+	    $.post('/vacay/pasttrips/', 
+	    	$(this).serialize(), 
+	    	function(data){
+	    		$('#num').text(data);
+	    		var x = JSON.parse(data)
+	    		alert(x.y)
+	       	// of course you can do something more fancy with your respone
+	    	});
+	    e.preventDefault();
+	});
+});
+
+
+// function my_js_callback100(data){
+//     alert(data.message);
+// }
+
 </script>
+
+<form id ="form">{% csrf_token %}
+    <input type="text" name="num"></input>
+    <!--<input type="submit" value="Submit" onclick="Dajaxice.vacay.vposts.sayhello(my_js_callback100);"></input>-->
+    <input type="submit" value="Submit"></input>
+</form>
+
+<p id="num"></p>
+
 {% endblock %}
 
 {% block right %}

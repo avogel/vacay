@@ -795,6 +795,18 @@ h4 small {
   border-bottom: 1px solid #eeeeee;
 }
 
+/* added by preston for form errors */
+ul.errorlist {
+  margin-left: 20px;
+  padding: 0;
+}
+.errorlist li {
+  color: #F21F1F;
+  font-size: 12px;
+  margin: 0 0 3px;
+  padding: 4px 5px;
+}
+
 ul,
 ol {
   padding: 0;
