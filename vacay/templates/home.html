@@ -83,6 +83,10 @@
 <br/>
 <br/>
 <h3>Recommended</h3>
+{% for post in recommended %}
+{% include "individualpost.html" %}
+<hr>
+{% endfor %}
 {% endblock %}
 
 {% block right %}
