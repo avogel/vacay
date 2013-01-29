@@ -75,11 +75,10 @@
 
 {% block content %}
 <div class="span12">
-	<form action="/search/" class="navbar-search pull-left">
-  		<input type="text" class="search-query input-xxlarge" placeholder="Search" name="q">
-  		<button type="submit" class="btn"><i class="icon-search"></i></button>
-	</form>
-</div>
+	{% with search_url="/search/" %}
+	{% include "search_bar.html" %}
+	{% endwith %}
+</div> 
 <br/>
 <br/>
 <h3>Recommended</h3>

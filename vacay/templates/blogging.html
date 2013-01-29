@@ -61,7 +61,7 @@
 				{% for city, daylist in days.iteritems %}
 				{% for day in daylist %}
 				<option {% if selected_date == day.id %} selected{% else %}{% endif %} value="{{day.id}}">
-					{{day.date}}, {{city.city_name}}
+					Day {{day.day_number}}, {{city.city_name}}
 				</option>
 				{% endfor %}
 				{% endfor %}
