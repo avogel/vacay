@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 
 {% block left %}
-<div id="side-scroll-nav" class="visible-desktop side-scroll-nav">
+<div class="visible-desktop side-scroll-nav">
 	<ul data-spy="affix" class="well nav nav-list affix" data-offset-bottom="500">
-		{% for city, day in days.iteritems %}
+		{% for city in trip.visited_cities.all %}
 			<!--{% if forloop.first %}class="active"{% endif %}-->
 			<li>
 				<a style="color: #333333" href="#{{city.id}}">{{city.city_name}}<i class="icon-chevron-right pull-right"></i></a>
 			
 			</li>
-			{% for d in day %}
-			<li><a href="#{{city.id}}_{{d.id}}">&nbsp;&nbsp;&nbsp;&nbsp;Day {{d.day_number}}</a></li>
+			{% for day in city.visited_days.all %}
+			<li><a href="#{{city.id}}_{{day.id}}">&nbsp;&nbsp;&nbsp;&nbsp;Day {{day.day_number}}</a></li>
 				{% endfor %}
 		{% endfor %}
 	</ul>

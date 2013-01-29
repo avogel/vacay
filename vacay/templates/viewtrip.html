@@ -6,11 +6,8 @@
 {% block center_width %}8{% endblock %}
 {% block right_width %}2{% endblock %}
 
-{% block post %}
-{% for post in day.written_posts.all %}
 
+{% block post %}
 {% include "individualpost.html" %}
 <hr>
-
-{% endfor %}
 {% endblock %}

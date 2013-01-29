@@ -48,6 +48,7 @@ function addInput(divName){
 {% block content %}
 
 <h2>Create a new trip!</h2>
+<h4>This page will create a skeleton for your trip, which you can plan and blog about later </h4>
 
 <form action="" method="post">  {% csrf_token %}
 	<div class="input">
@@ -58,7 +59,7 @@ function addInput(divName){
 
 			<p>Description: write a brief description of your trip (500 character max)</p>
 			{{ form.description.errors }}
-			<textarea style="text-align: left;" class="span12" id="id_description" name="description" rows="10">{% if not form.description.value == None %}{{form.description.value}}{% endif %}</textarea>
+			<textarea style="text-align: left;" class="span12" id="id_description" name="description" rows="5">{% if not form.description.value == None %}{{form.description.value}}{% endif %}</textarea>
 
 			<p>First Day:</p>
 			{{ form.start_date.errors }}
