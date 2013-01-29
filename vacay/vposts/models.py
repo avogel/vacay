@@ -30,7 +30,7 @@ class Trip(models.Model):
 class VisitedCity(models.Model):
     city_name = models.CharField(max_length=50)
     city_number = models.IntegerField()
-    trip = models.ForeignKey(Trip)
+    trip = models.ForeignKey(Trip, related_name="visited_cities")
     ideas = models.ManyToManyField(Post, related_name="city_ideas")
 
     def __unicode__(self):

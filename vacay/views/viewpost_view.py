@@ -32,15 +32,5 @@ def viewpost(request, id):
 		return HttpResponse(simplejson.dumps())
 	if user.is_authenticated():
 		trips = Trip.objects.filter(user=user)
-		cities = {}
-		days = {}
-		output = {}
-		for trip in trips:
-			#cities[trip] = VisitedCity.objects.filter(trip = trip)
-			output[trip] = VisitedCity.objects.filter(trip = trip)
-			for city in cities:
-				ds = VisitedDay.objects.filter(visited_city=city)
-				#days[city]=ds
-				output[trip][city]=VisitedDay.objects.filter(visited_city=city)
 
-	return render(request, 'viewpost.html', {'post' : post,'trips':trips,'cities':cities, 'output':output, 'post_id':id})
+	return render(request, 'viewpost.html', {'post' : post,'trips':trips, 'post_id':id})

@@ -48,10 +48,10 @@
 		<div class="input">
 			<h4>Title:</h4>
 			{{ form.title.errors }}
-			<input class="span12" id="id_title" type="text" name="title" {% if not form.title.value == None %}value="{{form.title.value}}"{% endif %} maxlength="200">
+			<input style="text-align: left;" class="span12" id="id_title" type="text" name="title" {% if not form.title.value == None %}value="{{form.title.value}}"{% endif %} maxlength="200">
 			<h4>Contents:</h4>
 			{{ form.contents.errors }}
-			<textarea class="span12" id="id_contents" name="contents" rows="20">{% if not form.contents.value == None %}{{form.contents.value}}{% endif %}</textarea>
+			<textarea style="text-align: left;" class="span12" id="id_contents" name="contents" rows="20">{% if not form.contents.value == None %}{{form.contents.value}}{% endif %}</textarea>
 			<span class="help-block">
 				<h4>Please select which day and city this post is for:</h4>
 			</span>
