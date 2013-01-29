@@ -29,19 +29,20 @@ class Trip(models.Model):
 
 class VisitedCity(models.Model):
     city_name = models.CharField(max_length=50)
-    city_number = models.IntegerField()
-    trip = models.ForeignKey(Trip, related_name="visited_cities")
+    #city_number = models.IntegerField()
+    #trip = models.ForeignKey(Trip, related_name="visited_cities")
+    trip = models.ForeignKey(Trip)
     ideas = models.ManyToManyField(Post, related_name="city_ideas")
 
     def __unicode__(self):
         return self.city_name + " for trip " + self.trip.name
 
-    class Meta:
-        ordering = ['city_number', 'id']
+    #class Meta:
+    #    ordering = ['city_number', 'id']
 
 class VisitedDay(models.Model):
-    date = models.DateField(blank=True)
-    day_number = models.IntegerField()
+    date = models.DateField()#blank=True)
+    #day_number = models.IntegerField()
     visited_city = models.ForeignKey(VisitedCity, related_name='visited_days')
     written_posts = models.ManyToManyField(Post, related_name='written_posts')
     ideas = models.ManyToManyField(Post, related_name='ideas')
@@ -49,5 +50,5 @@ class VisitedDay(models.Model):
     def __unicode__(self):
         return str(self.date) + " for " + str(self.visited_city)
 
-    class Meta:
-        ordering = ['day_number', 'id']
+    #class Meta:
+    #    ordering = ['day_number', 'id']
