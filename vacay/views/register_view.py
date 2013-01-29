@@ -1,17 +1,15 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from vacay.forms import RegistrationForm
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.template import RequestContext
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = RegistrationForm(request.POST)
         if form.is_valid():
             new_user = form.save()
             return HttpResponseRedirect("/home/")
     else:
-        form = UserCreationForm()
-    return render(request, "registration/register.html", {
-        'form': form,},
-        context_instance=RequestContext(request))
+        form = RegistrationForm()
+    return render(request, "registration/register.html", {'form': form,})

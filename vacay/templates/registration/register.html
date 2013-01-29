@@ -3,8 +3,37 @@
 {% block title %}Create an account{% endblock %}
 
 {% block content %}
-  <form action="" method="post">{% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" value="Create the account">
-  </form>
+<form action="" method="post">{% csrf_token %}
+	<p>
+		<label for="id_username">Username:</label>
+		{{ form.username.errors }}
+		<input id="id_username" name="username" type="text" maxlength="30" value="{% if form.is_bound %}{{ form.username.value }}{% endif %}">
+	</p>
+	<p>
+		<label for="id_email">Email:</label>
+		{{ form.email.errors }}
+		<input id="id_email" name="email" type="text" value="{% if form.is_bound %}{{ form.email.value }}{% endif %}">
+	</p>
+	<p>
+		<label for="id_first_name">First Name:</label>
+		{{ form.first_name.errors }}
+		<input id="id_first_name" name="first_name" type="text" maxlength="30" value="{% if form.is_bound %}{{ form.first_name.value }}{% endif %}">
+	</p>
+	<p>
+		<label for="id_last_name">Last Name:</label>
+		{{ form.last_name.errors }}
+		<input id="id_last_name" name="last_name" type="text" maxlength="30" value="{% if form.is_bound %}{{ form.last_name.value }}{% endif %}">
+	</p>
+	<p>
+		<label for="id_password1">Password:</label>
+		{{ form.password1.errors }}
+		<input id="id_password1" name="password1" type="password">
+	</p>
+	<p>
+		<label for="id_password2">Password confirmation:</label>
+		{{ form.password2.errors }}
+		<input id="id_password2" name="password2" type="password">
+	</p>
+	<button class="btn btn-inverse" type="submit">Create account</button>
+</form>
 {% endblock %}

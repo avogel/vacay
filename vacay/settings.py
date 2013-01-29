@@ -124,7 +124,7 @@ ROOT_URLCONF = 'vacay.urls'
 
 LOGIN_URL = '/accounts/login/'
 
-LOGOUT_URL = '/accounts/logout/'
+LOGOUT_URL = '/accounts/login/'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'vacay.wsgi.application'
@@ -151,8 +151,17 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'vacay.vposts',
+    'haystack',
     #'dajaxice',
 )
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
+        'INCLUDE_SPELLING': True,
+    },
+}
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
