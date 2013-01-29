@@ -15,8 +15,7 @@ def newtrip(request):
 		form = NewTripForm(request.POST, city_list=city_list)
 		print "new trip form: ", form.data
 		if form.is_valid():
-			make_trip(user, city_list, form)
-			return HttpResponseRedirect('/tripplanning/%d/' % 1)
+			return make_trip(user, city_list, form)
 	else:
 		form = NewTripForm()
 	print city_list
@@ -58,3 +57,4 @@ def make_trip(user, city_list, form):
 				visited_day.save()
 			if not (i == int(num_days)-1 and overlap):
 				day_num += 1
+	return HttpResponseRedirect('/tripplanning/%d/' % trip.id)
