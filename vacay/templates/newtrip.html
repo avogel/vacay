@@ -58,7 +58,7 @@ function addInput(divName){
 
 			<p>Description:</p>
 			{{ form.description.errors }}
-			<textarea class="span12" id="id_description" name="description" rows="10">{% if not form.description.value == None %}{{form.description.value}}{% endif %}</textarea>
+			<textarea style="text-align: left;" class="span12" id="id_description" name="description" rows="10">{% if not form.description.value == None %}{{form.description.value}}{% endif %}</textarea>
 
 			<p>First Day:</p>
 			{{ form.start_date.errors }}
