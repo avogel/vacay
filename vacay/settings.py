@@ -1,6 +1,6 @@
 # Django settings for vacay project.
 import os.path
-import dj_database_url
+#import dj_database_url
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -14,14 +14,14 @@ MANAGERS = ADMINS
 
 
 DATABASES = {
-#    'default': {
-#       'ENGINE': 'django.db.backends.postgresql_psycopg2',
-       # 'ENGINE': 'django.db.backends.mysql',
-       # 'NAME': 'prestont+vacay',
-       # 'USER': 'prestont',
-       # 'PASSWORD': 'hib97xug',
-       # 'HOST': 'sql.mit.edu',
-       # 'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'prestont+vacay',
+#        'USER': 'prestont',
+#        'PASSWORD': 'hib97xug',
+#        'HOST': 'sql.mit.edu',
+#        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
 #    }
 }
 
