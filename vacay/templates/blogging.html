@@ -7,19 +7,35 @@
 
 {% block content %}
 <div data-spy="scroll" data-target=".well .nav .nav-list .affix" class="post-content">
+	<h1>Ideas for:</h1>
+	<h2> {{trip.name}}</h2>
+	{% for post in trip.ideas.all %}
+	<h4>{{post.title}}</h4>
+	<h5> Bookmarked to {{trip.name}}</h5>
+	<p>{{post.contents}}</p>
+	<hr>
+	{% endfor %}
 	{% for city, daylist in days.iteritems %}
+	<hr>
 	<section id="{{city.id}}">
 		<h2>{{city.city_name}}</h2>
 	</section>
+	{% for post in city.ideas.all %}
+	<h4>{{post.title}}</h4>
+	<h5> Bookmarked to {{city.city_name}}</h5>
+	<p>{{post.contents}}</p>
+	<hr>
+	{% endfor %}
 		{% for day in daylist %}
 		<section id="{{city.id}}_{{day.id}}">
 			{% for post in day.ideas.all %}
 			<h4>{{post.title}}</h4>
+			<h5> Bookmarked to {{day.date}}</h5>
 			<p>{{post.contents}}</p>
+			<hr>
 			{% endfor %}
 		</section>
 		{% endfor %}
-	<!--</section> -->
 	{% endfor %}
 </div>
 {% endblock %}
@@ -27,31 +43,31 @@
 
 
 {% block right %}
-
-<form action="" method="post">  {% csrf_token %}
-	<div class="input">
-		<p>Title:</p>
-		{{ form.title.errors }}
-		<input id="id_title" type="text" name="title" {% if not form.title.value == None %}value="{{form.title.value}}"{% endif %} maxlength="200">
-		<p>Contents:</p>
-		{{ form.contents.errors }}
-		<textarea class="span12" id="id_contents" name="contents" rows="20">{% if not form.contents.value == None %}{{form.contents.value}}{% endif %}</textarea>
-		<span class="help-block">
-			Please select which day and city this post is for:
-		</span>
-		{{ form.day.errors }}
-		<select class="pull left" name="day" id="id_day">
-			<option value="-1">-------</option>
-			{% for city, daylist in days.iteritems %}
-			{% for day in daylist %}
-			<option {% if selected_date == day.id %} selected{% else %}{% endif %} value="{{day.id}}">
-				{{day.date}}, {{city.city_name}}
-			</option>
-			{% endfor %}
-			{% endfor %}
-		</select>
-	    <button type="submit" class="btn btn-inverse pull-right">Submit</button>
-	</div>
-</form>
-
+<div class="span4" data-spy="affix">
+	<form action="" method="post">  {% csrf_token %}
+		<div class="input">
+			<h4>Title:</h4>
+			{{ form.title.errors }}
+			<input class="span12" id="id_title" type="text" name="title" {% if not form.title.value == None %}value="{{form.title.value}}"{% endif %} maxlength="200">
+			<h4>Contents:</h4>
+			{{ form.contents.errors }}
+			<textarea class="span12" id="id_contents" name="contents" rows="20">{% if not form.contents.value == None %}{{form.contents.value}}{% endif %}</textarea>
+			<span class="help-block">
+				<h4>Please select which day and city this post is for:</h4>
+			</span>
+			{{ form.day.errors }}
+			<select class="pull left" name="day" id="id_day">
+				<option value="-1">-------</option>
+				{% for city, daylist in days.iteritems %}
+				{% for day in daylist %}
+				<option {% if selected_date == day.id %} selected{% else %}{% endif %} value="{{day.id}}">
+					{{day.date}}, {{city.city_name}}
+				</option>
+				{% endfor %}
+				{% endfor %}
+			</select>
+			<button type="submit" class="btn btn-inverse pull-right">Submit</button>
+		</div>
+	</form>
+</div>
 {% endblock %}
