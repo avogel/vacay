@@ -36,7 +36,6 @@
 			{% endfor %}
 		</section>
 		{% endfor %}
-	<!--</section> -->
 	{% endfor %}
 </div>
 {% endblock %}
@@ -45,31 +44,30 @@
 
 {% block right %}
 <div class="span4" data-spy="affix">
-<form action="" method="post">  {% csrf_token %}
-	<div class="input">
-		<h4>Title:</h4>
-		{{ form.title.errors }}
-		<input class="span12" id="id_title" type="text" name="title" {% if not form.title.value == None %}value="{{form.title.value}}"{% endif %} maxlength="200">
-		<h4>Contents:</h4>
-		{{ form.contents.errors }}
-		<textarea class="span12" id="id_contents" name="contents" rows="20">{% if not form.contents.value == None %}{{form.contents.value}}{% endif %}</textarea>
-		<span class="help-block">
-			<h4>Please select which day and city this post is for:</h4>
-		</span>
-		{{ form.day.errors }}
-		<select class="pull left" name="day" id="id_day">
-			<option value="-1">-------</option>
-			{% for city, daylist in days.iteritems %}
-			{% for day in daylist %}
-			<option {% if selected_date == day.id %} selected{% else %}{% endif %} value="{{day.id}}">
-				{{day.date}}, {{city.city_name}}
-			</option>
-			{% endfor %}
-			{% endfor %}
-		</select>
-	    <button type="submit" class="btn btn-inverse pull-right">Submit</button>
-	</div>
-</form>
+	<form action="" method="post">  {% csrf_token %}
+		<div class="input">
+			<h4>Title:</h4>
+			{{ form.title.errors }}
+			<input class="span12" id="id_title" type="text" name="title" {% if not form.title.value == None %}value="{{form.title.value}}"{% endif %} maxlength="200">
+			<h4>Contents:</h4>
+			{{ form.contents.errors }}
+			<textarea class="span12" id="id_contents" name="contents" rows="20">{% if not form.contents.value == None %}{{form.contents.value}}{% endif %}</textarea>
+			<span class="help-block">
+				<h4>Please select which day and city this post is for:</h4>
+			</span>
+			{{ form.day.errors }}
+			<select class="pull left" name="day" id="id_day">
+				<option value="-1">-------</option>
+				{% for city, daylist in days.iteritems %}
+				{% for day in daylist %}
+				<option {% if selected_date == day.id %} selected{% else %}{% endif %} value="{{day.id}}">
+					{{day.date}}, {{city.city_name}}
+				</option>
+				{% endfor %}
+				{% endfor %}
+			</select>
+			<button type="submit" class="btn btn-inverse pull-right">Submit</button>
+		</div>
+	</form>
 </div>
-
 {% endblock %}
