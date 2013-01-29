@@ -22,16 +22,13 @@ function bookmark(type_var, id_var) {
 
 {% block content%}
 
-<form action="/tripplanning/{{id}}/" class="form-search">
-	<div class="input-append">
-		<input id="appendedInputButton" class="input-xxlarge search-query" placeholder="Search" name="query" type="text" >
-		<button class="btn" type="submit"><i class="icon-search"></i></button>
-	</div>
-</form>
+<h2>Plan Your Trip</h2>
+<span class="help-block">Search for posts and trips to use as ideas for your trip!</span> 
 
-{% if results %}
-<h3> Results for {{q}}</h3>
-{% for result in results %}
+{% url 'views.tripplanning' id as search_url %}
+{% include "search_bar.html" %}
+
+{% for result in page.object_list %}
 <div class="btn-group pull-right">
 	<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 		<i class="icon-bookmark"></i>
@@ -58,11 +55,14 @@ function bookmark(type_var, id_var) {
 		{% endfor %}
 	</ul>
 </div>
-	<h4><a style="color: #333333" href="/viewpost/{{result.id}}">{{result.title}}</a></h4><!-- <a href="/viewpost/{{result.id}}">{{result}}</a> -->
-	<p>{{result.contents}}</p>
+	<h4><a style="color: #333333" href="/viewpost/{{result.id}}">{{result.object.title}}</a></h4><!-- <a href="/viewpost/{{result.id}}">{{result}}</a> -->
+	<p>{{result.object.contents}}</p>
 <hr>
+{% empty %}
+<ul>
+	<li>No results found.</li>
+</ul>
 {% endfor %}
-{% endif %}
 <script>  
 	$(function ()  
 		{ $("#bookmark").popover({
