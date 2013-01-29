@@ -4,15 +4,20 @@
 {% block right_width %}2{% endblock %}
 
 {% block content %}
-<div data-spy="scroll" data-target=".well .nav .nav-list .affix" class="post-content">
-	{% for city, daylist in days.iteritems %}
+<div class="post-content">
+	<h1>{{trip.name}}</h1>
+	<h4>{{trip.description}}</h4>
+	<hr>
+	{% for city in trip.visited_cities.all %}
 	<section id="{{city.id}}">
 		<h2>{{city.city_name}}</h2>
 	</section>
-		{% for day in daylist %}
+		{% for day in city.visited_days.all %}
 		<section id="{{city.id}}_{{day.id}}">
+			{% for post in day.written_posts.all %}
 			{% block post %}
 			{% endblock %}
+			{% endfor %}
 		</section>
 		{% endfor %}
 	<!--</section> -->

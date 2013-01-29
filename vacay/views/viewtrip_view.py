@@ -11,9 +11,4 @@ def viewtrip(request, id):
 	trip = Trip.objects.get(id=id)
 	user = request.user
 	trips = Trip.objects.filter(user = user)
-	cities = VisitedCity.objects.filter(trip=trip)
-	days = {}
-	for city in cities:
-		ds = VisitedDay.objects.filter(visited_city=city)
-		days[city]=ds
-	return render(request, 'viewtrip.html', {'trips':trips,'trip' : trip,'cities' : cities, 'days':days})
+	return render(request, 'viewtrip.html', {'trips':trips,'trip' : trip})
