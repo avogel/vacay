@@ -21,7 +21,7 @@
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 		<h2 id="myModalLabel">Which trip do you want to see:</h2>
 	</div>
-	<div class="modal-body">
+	<div class="well modal-body">
 		{% for trip in past_trips %}
 		<h3><a href="/viewtrip/{{trip.id}}">{{trip.name}}</a><h3>
 		{% endfor %}
@@ -33,7 +33,7 @@
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 		<h2 id="myModalLabel">Which trip do you want to plan?</h2>
 	</div>
-	<div class="modal-body">
+	<div class="well modal-body">
 		{% for trip in future_trips %}
 		<h3><a href="/tripplanning/{{trip.id}}">{{trip.name}}</a><h3>
 		{% endfor %}
@@ -45,7 +45,7 @@
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 		<h2 id="myModalLabel">Which trip do you want to write about:</h2>
 	</div>
-	<div class="modal-body">
+	<div class="well modal-body">
 		{% for trip in future_trips %}
 		<h3><a href="/blogging/{{trip.id}}">{{trip.name}}</a><h3>
 		{% endfor %}
