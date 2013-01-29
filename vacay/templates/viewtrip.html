@@ -8,7 +8,9 @@
 
 {% block post %}
 {% for post in day.written_posts.all %}
-<h4>{{post.title}}</h4>
-<p>{{post.contents}}</p>
+
+{% include "individualpost.html" %}
+<hr>
+
 {% endfor %}
 {% endblock %}
