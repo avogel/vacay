@@ -10,6 +10,8 @@ class Post(models.Model):
     def __unicode__(self):
         return self.title
 
+
+
 class Trip(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=500)
@@ -44,3 +46,10 @@ class VisitedDay(models.Model):
 
     class Meta:
         ordering = ['day_number', 'id']
+
+class Tag(models.Model):
+    name = models.CharField(max_length=50)
+    tagged_posts = models.ManyToManyField(Post, related_name='tagged_posts')
+    tagged_days = models.ManyToManyField(VisitedDay, related_name='tagged_days')
+    tagged_cities = models.ManyToManyField(VisitedCity, related_name='tagged_cities')
+    tagged_trips = models.ManyToManyField(Trip, related_name='tagged_trips')

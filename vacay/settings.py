@@ -161,7 +161,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'vacay.vposts',
     'haystack',
-    #'south',
+    'south',
     #'dajaxice',
 )
 
