@@ -8,22 +8,24 @@
 
 {% block left %}
 <h4>Categories</h4>
-<h6>Wrong Search!</h6>
 {% endblock %}
 
 {% block content %}
 <div class="span12">
-	<form action="/search/" class="navbar-search pull-left">
-  		<input type="text" class="search-query input-xxlarge" placeholder="Search" name="query" value="{{query}}">
+	<form action="." class="navbar-search pull-left">
+  		<input type="text" class="search-query input-xxlarge" placeholder="Search" name="q" value="{{query}}">
+  		<input type="hidden" name="models" value="vposts.post" id="id_models_0">
+  		<input type="hidden" name="models" value="vposts.trip" id="id_models_1">
   		<button type="submit" class="btn"><i class="icon-search"></i></button>
 	</form>
+	{{form.as_p}}
 </div>
 <h3>Results</h3>
 <ul>
-{% for result in results %}
+{% for result in page.object_list %}
 <li>
-	<a href="/viewpost/{{result.id}}">{{result}}</a>
-	<p>{{result.contents}}</p>
+	<a href="/viewpost/{{result.object.id}}">{{result.object}}</a>
+	<p>{{result.object.contents}}</p>
 </li>
 {% empty %}
 <li>No results found.</li>

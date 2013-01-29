@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title%}
+Contact Us!
+{% endblock %}
+
+{% block content %}
+<h2>Contact Us</h2>
+
+    {% if form.errors %}
+        <p style="color: red;">
+            Please correct the error{{ form.errors|pluralize }} below.
+        </p>
+    {% endif %}
+
+    <form action="" method="post"> {% csrf_token %}
+        <p><label for="id_subject">Subject:</label> <input id="id_subject" type="text" name="subject" maxlength="100"></p>
+		<p><label for="id_email">Your Email:</label> <input type="text" name="email" id="id_email"></p>
+		<p><label for="id_message">Message:</label> <textarea id="id_message" rows="10" class="span12" name="message"></textarea></p>
+        <button type="submit" class="btn btn-inverse">Send</button>
+    </form>
+{% endblock %}

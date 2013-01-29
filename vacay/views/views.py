@@ -9,5 +9,6 @@ from vacay.views.viewtrip_view import viewtrip
 from vacay.views.viewpost_view import viewpost
 from vacay.views.search_view import search
 from vacay.views.register_view import register
-from vacay.views.search_view import emptysearch
 from vacay.views.newtrip_view import newtrip
+from vacay.views.about_view import about
+from vacay.views.contact_view import contact, contact_thanks
