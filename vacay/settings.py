@@ -2,8 +2,8 @@
 import os.path
 #import dj_database_url
 
-DEBUG = True
-TEMPLATE_DEBUG = True
+DEBUG = False
+TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     ('prestont', 'prestont@mit.edu'),
