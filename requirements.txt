@@ -4,3 +4,4 @@ dj_database_url==0.2.1
 gunicorn==0.16.1
 Whoosh==2.4.1
 git+https://github.com/toastdriven/django-haystack.git@master#egg=django-haystack==2.0.0-beta
+South==0.7.6
