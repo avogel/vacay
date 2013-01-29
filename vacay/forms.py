@@ -1,5 +1,6 @@
 from django import forms
 from vacay.vposts.models import VisitedDay
+from django.contrib.auth.forms import UserCreationForm
 
 class BlogForm(forms.Form):
 	title = forms.CharField(max_length=200)
@@ -30,3 +31,13 @@ class NewTripForm(forms.Form):
 		self.num_cities = i - 1
 		# if self.num_cities < 0:
 		# 	raise forms.ValidationError("You must visit at least one city!")
+
+class ContactForm(forms.Form):
+    subject = forms.CharField(max_length=100)
+    email = forms.EmailField(required=False)
+    message = forms.CharField(widget=forms.Textarea)
+
+class RegistrationForm(UserCreationForm):
+	email = forms.EmailField()
+	first_name = forms.CharField(max_length=30)
+	last_name = forms.CharField(max_length=30)
