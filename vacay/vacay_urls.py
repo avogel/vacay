@@ -25,6 +25,7 @@ urlpatterns = patterns('',
     (r'^accounts/logout/$', logout, {'template_name' :'landing.html'}),
     (r'^registration/register/$', views.register),
     (r'^admin/', include(admin.site.urls)),
+    (r'^newtrip/$', views.newtrip),
 
     # Examples:
     # url(r'^$', 'vacay.views.home', name='home'),
