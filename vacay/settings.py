@@ -12,8 +12,17 @@ ADMINS = (
 MANAGERS = ADMINS
 
 
-
 DATABASES = {
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'de20st900tr42c',
+    'HOST': 'ec2-54-243-229-75.compute-1.amazonaws.com',
+    'PORT': 5432,
+    'USER': 'zmgpzgzaierauz',
+    'PASSWORD': 'd34R5fNRiQPFeUUP4xsJz_QcKI'
+  }
+}
+#DATABASES = {
 #    'default': {
 #       'ENGINE': 'django.db.backends.postgresql_psycopg2',
        # 'ENGINE': 'django.db.backends.mysql',
@@ -23,7 +32,7 @@ DATABASES = {
        # 'HOST': 'sql.mit.edu',
        # 'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
 #    }
-}
+#}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -212,6 +221,6 @@ LOGGING = {
 
 }
 
-DATABASE_URL = 'postgres://zmgpzgzaierauz:d34R5fNRiQPFeUUP4xsJz_QcKI@ec2-54-243-229-75.compute-1.amazonaws.com:5432/de20st900tr42c'
+#DATABASE_URL = 'postgres://zmgpzgzaierauz:d34R5fNRiQPFeUUP4xsJz_QcKI@ec2-54-243-229-75.compute-1.amazonaws.com:5432/de20st900tr42c'
 
-DATABASES['default'] =  dj_database_url.config()
+#DATABASES['default'] =  dj_database_url.config()
