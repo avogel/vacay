@@ -1,0 +1,123 @@
+{% extends "sidebar.html" %}
+
+{% block title %}Create a new trip!{% endblock %}
+
+{% block extrahead %}
+
+<script>
+var today = new Date();
+var d=today.getDate();
+var m=today.getMonth();
+var y=today.getFullYear();
+// add a zero in front of numbers<10
+d=checkTime(d);
+m=checkTime(m);
+document.getElementById('id_start_date').getAttributeNode("data-date").value=m+"-"+d+"-"+y;
+}
+
+function checkTime(i)
+{
+if (i<10)
+  {
+  i="0" + i;
+  }
+return i;
+}
+</script>
+
+<script>
+{% if city_list %}
+var counter = {{city_list|length}} + 1;
+{% else %}
+var counter = 2;
+{% endif %}
+function addInput(divName){
+	var newbr = document.createElement('br');
+    document.getElementById(divName).appendChild(newbr);
+    var newp = document.createElement('p');
+    newp.innerHTML = 'City name: <input id="id_city_name' +  counter + '" type="text" name="city_name' +  counter + '"> Number of days in city: <input id="id_num_days' +  counter + '" type="text" name="num_days' +  counter + '"><br/> <input type="checkbox" name="overlap' +  counter + '" id="id_overlap' +  counter + '" value="overlap' +  counter + '">&nbsp;&nbsp;The last day in this city overlaps with the first day of the next city';
+    document.getElementById(divName).appendChild(newp);
+    counter++;
+}
+</script>
+
+{% endblock %}
+
+{% block left %}{% endblock %}
+
+{% block content %}
+
+<h2>Create a new trip!</h2>
+
+<form action="" method="post">  {% csrf_token %}
+	<div class="input">
+		<div id="dynamicInput">
+			<p>Name:</p>
+			{{ form.name.errors }}
+			<input id="id_name" type="text" name="name" {% if not form.name.value == None %}value="{{form.name.value}}"{% endif %} maxlength="100">
+
+			<p>Description:</p>
+			{{ form.description.errors }}
+			<textarea class="span12" id="id_description" name="description" rows="10">{% if not form.description.value == None %}{{form.description.value}}{% endif %}</textarea>
+
+			<p>First Day:</p>
+			{{ form.start_date.errors }}
+			<div class="input-append date" id="id_start_date" name="start_date" data-date="" data-date-format="mm-dd-yyyy">
+				<input class="span2" size="16" name="start_date" type="text" value="">
+				<span class="add-on"><i class="icon-calendar"></i></span>
+			</div>
+			<span class="help-block">
+			If you don't know which date you'll be starting on, just leave this blank and you can change it later if you'd like.
+			</span>
+
+			<br/>
+			<br/>
+
+			{% if city_list %}
+
+			{% for city_name, num_days, overlap in city_list %}
+			{% if not city_name or not num_days %}
+			<ul class="errorlist">
+				<li>You must have a valid city name and a valid number of days below.</li>
+			</ul>
+			{% endif %}
+			<p>City name: <input id="id_city_name{{forloop.counter}}" type="text" name="city_name{{forloop.counter}}" value="{{city_name}}">
+			Number of days in city: <input id="id_num_days{{forloop.counter}}" type="text" name="num_days{{forloop.counter}}" value="{{num_days}}"><br/>
+			<input type="checkbox" name="overlap{{forloop.counter}}" id="id_overlap{{forloop.counter}}" value="overlap{{forloop.counter}}" {% if overlap %}checked="checked"{% endif %}>&nbsp;&nbsp;The last day in this city overlaps with the first day of the next city</p>
+
+			{% if not forloop.last %}
+			<br/>
+			{% endif %}
+
+			{% endfor %}
+
+			{% else %}
+
+			<p>City name: <input id="id_city_name1" type="text" name="city_name1">
+			Number of days in city: <input id="id_num_days1" type="text" name="num_days1"><br/>
+			<label class="checkbox"><input type="checkbox" name="overlap1" id="id_overlap1" value="overlap1"/>&nbsp;&nbsp;The last day in this city overlaps with the first day of the next city</label></p>
+
+			<!-- <br/>
+
+			<p>City name: <input id="id_city_name2" type="text" name="city_name2">
+			Number of days in city: <input id="id_num_days2" type="text" name="num_days2"><br/>
+			<input type="checkbox" name="overlap2" id="id_overlap2" value="overlap2">&nbsp;&nbsp;The last day in this city overlaps with the first day of the next city</p> -->
+
+			{% endif %}
+
+     	</div>
+
+     	<br/>
+
+     	<button class="btn pull-right" onClick="addInput('dynamicInput'); return false;"><i class="icon-plus"></i>&nbsp;Add City</button>
+
+	    <button type="submit" class="btn btn-inverse pull-left">Submit</button>
+	</div>
+</form>
+
+<script src="{{STATIC_URL}}js/bootstrap-datepicker.js"></script>
+<script>
+$("#id_start_date").datepicker();
+</script>
+
+{% endblock %}
