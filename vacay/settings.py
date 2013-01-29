@@ -3,7 +3,7 @@ import os.path
 #import dj_database_url
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+TEMPLATE_DEBUG = True
 
 ADMINS = (
     ('prestont', 'prestont@mit.edu'),

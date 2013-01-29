@@ -19,11 +19,12 @@
 <div id="pastTripsModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-		<h2 id="myModalLabel">Which trip do you want to see:</h2>
+		<h3 id="myModalLabel">Read through your past trips.</h3>
+		<h4> Which trip would you like to see?</h4>
 	</div>
 	<div class="well modal-body">
 		{% for trip in past_trips %}
-		<h3><a href="/viewtrip/{{trip.id}}">{{trip.name}}</a><h3>
+		<h4><a href="/viewtrip/{{trip.id}}">{{trip.name}}</a></h4>
 		{% endfor %}
 	</div>
 </div>
@@ -31,24 +32,28 @@
 <div id="planModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-		<h2 id="myModalLabel">Which trip do you want to plan?</h2>
+		<h3 id="myModalLabel">Plan a future trip. Search, Read and Bookmark.</h3>
+		<h4>Which trip do you want to continue planning?</h4>
 	</div>
 	<div class="well modal-body">
 		{% for trip in future_trips %}
-		<h3><a href="/tripplanning/{{trip.id}}">{{trip.name}}</a><h3>
+		<h4><a href="/tripplanning/{{trip.id}}">{{trip.name}}</a><h4>
 		{% endfor %}
+		<a class="btn btn-primary pull-right" href="/newtrip/">New Trip</a>
 	</div>
 </div>
 
 <div id="blogModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-		<h2 id="myModalLabel">Which trip do you want to write about:</h2>
+		<h3 id="myModalLabel">Blog about your trip.</h3>
+		<h4>Which trip do you want to write about?</h4>
 	</div>
 	<div class="well modal-body">
-		{% for trip in future_trips %}
-		<h3><a href="/blogging/{{trip.id}}">{{trip.name}}</a><h3>
+		{% for trip in past_trips %}
+		<h4><a href="/blogging/{{trip.id}}">{{trip.name}}</a><h4>
 		{% endfor %}
+		<a class="btn btn-primary pull-right" href="/newtrip/">New Trip</a>
 	</div>
 </div>
 
@@ -77,6 +82,10 @@
 <br/>
 <br/>
 <h3>Recommended</h3>
+{% for post in recommended %}
+{% include "individualpost.html" %}
+<hr>
+{% endfor %}
 {% endblock %}
 
 {% block right %}
