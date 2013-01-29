@@ -4,7 +4,9 @@ from django.http import HttpResponseRedirect
 from vacay.vposts.models import *
 from vacay.forms import BlogForm
 from datetime import date
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def blogging(request, id):
 	try:
 		id = int(id)
@@ -20,7 +22,7 @@ def blogging(request, id):
 			post.save()
 			vd.written_posts.add(post)
 			vd.save()
-			return HttpResponseRedirect('/vacay/blogging/%d/' % trip.id)
+			return HttpResponseRedirect('/blogging/%d/' % trip.id)
 		try:
 			selected_date = int(form['day'].value())
 		except:
