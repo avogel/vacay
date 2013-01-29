@@ -1,5 +1,5 @@
 from django.template.loader import get_template
-from django.http import Http404, HttpResponse
+from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.shortcuts import *
 from vacay.vposts.models import *
 from django.utils import simplejson
@@ -12,7 +12,10 @@ def viewpost(request, id):
 		id = int(id)
 	except ValueError:
 		raise Http404()
-	post = Post.objects.get(id=id)
+	try:
+		post = Post.objects.get(id=id)
+	except Exception, e:
+		return HttpResponseRedirect('/home/')
 	user = request.user
 	if request.method == 'POST':
 		type = request.POST["type"]
