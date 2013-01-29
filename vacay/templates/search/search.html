@@ -7,17 +7,13 @@
 {% block right_width %}2{% endblock %}
 
 {% block left %}
-<h4>Categories</h4>
 {% endblock %}
 
 {% block content %}
 <div class="span12">
-	<form action="." class="navbar-search pull-left">
-  		<input type="text" class="search-query input-xxlarge" placeholder="Search" name="q" value="{{query}}">
-  		<input type="hidden" name="models" value="vposts.post" id="id_models_0">
-  		<input type="hidden" name="models" value="vposts.trip" id="id_models_1">
-  		<button type="submit" class="btn"><i class="icon-search"></i></button>
-	</form>
+	{% with search_url="." %}
+	{% include "search_bar.html" %}
+	{% endwith %}
 </div>
 <h3>Results</h3>
 {% for result in page.object_list %}
