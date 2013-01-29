@@ -2,7 +2,7 @@
 import os.path
 import dj_database_url
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -14,15 +14,15 @@ MANAGERS = ADMINS
 
 
 DATABASES = {
-#   'default': {
-      # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#       'ENGINE': 'django.db.backends.mysql',
-#       'NAME': 'prestont+vacay',
-#       'USER': 'prestont',
-#       'PASSWORD': 'hib97xug',
-#       'HOST': 'sql.mit.edu',
-#       'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-#   }
+#    'default': {
+#       'ENGINE': 'django.db.backends.postgresql_psycopg2',
+       # 'ENGINE': 'django.db.backends.mysql',
+       # 'NAME': 'prestont+vacay',
+       # 'USER': 'prestont',
+       # 'PASSWORD': 'hib97xug',
+       # 'HOST': 'sql.mit.edu',
+       # 'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+#    }
 }
 
 # Local time zone for this installation. Choices can be found here:
@@ -202,6 +202,6 @@ LOGGING = {
 
 }
 
- DATABASE_URL = 'postgres://jnhqfgkyikdexw:QGI_HLRWGIGKpLgM3rYPLXitm4@ec2-54-243-193-133.compute-1.amazonaws.com:5432/davi6huvl5i46a'
+DATABASE_URL = 'postgres://jnhqfgkyikdexw:QGI_HLRWGIGKpLgM3rYPLXitm4@ec2-54-243-193-133.compute-1.amazonaws.com:5432/davi6huvl5i46a'
 
- DATABASES['default'] =  dj_database_url.config()
+DATABASES['default'] =  dj_database_url.config()
