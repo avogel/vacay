@@ -78,3 +78,13 @@ function bookmark(type_var, id_var) {
 	});  
 	</script>
 {% endblock %}
+
+
+{% block right %}
+
+<form method="POST" action="/blogging/{{id}}/">
+	{% csrf_token %}
+	<button type="submit" name="fromTripPlanning" class="btn btn-inverse">Blog about this trip</button>
+</form>
+
+{% endblock %}

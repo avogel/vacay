@@ -13,20 +13,31 @@ def blogging(request, id):
 	except ValueError:
 		raise Http404()
 	trip = Trip.objects.get(id=id)
+	if not trip.user == request.user:
+		return HttpResponseRedirect('/home/#blogModal')
 	if request.method == 'POST':
-		form = BlogForm(request.POST)
-		if form.is_valid():
-			cd = form.cleaned_data
-			vd = cd['day']
-			post = Post(title=cd['title'], contents=cd['contents'], date_written=date.today())
-			post.save()
-			vd.written_posts.add(post)
-			vd.save()
-			return HttpResponseRedirect('/blogging/%d/' % trip.id)
-		try:
-			selected_date = int(form['day'].value())
-		except:
+		if 'fromTripPlanning' in request.POST:
+			trip.is_completed = True
+			trip.save()
 			selected_date = -1
+			form = BlogForm()
+		elif 'fromBlogging' in request.POST:
+			form = BlogForm(request.POST)
+			if form.is_valid():
+				cd = form.cleaned_data
+				vd = cd['day']
+				post = Post(title=cd['title'], contents=cd['contents'], date_written=date.today())
+				post.save()
+				vd.written_posts.add(post)
+				vd.save()
+				return HttpResponseRedirect('/blogging/%d/' % trip.id)
+			try:
+				selected_date = int(form['day'].value())
+			except:
+				selected_date = -1
+		else:
+			selected_date=-1
+			form = BlogForm()
 	else:
 		form = BlogForm()
 		selected_date = -1
