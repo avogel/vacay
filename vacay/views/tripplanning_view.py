@@ -12,8 +12,11 @@ def tripplanning(request, id):
 		id = int(id)
 	except ValueError:
 		raise Http404()
+	try:
+		current_trip = Trip.objects.get(id=id)
+	except Exception, e:
+		return HttpResponseRedirect('/home/')
 	user = request.user
-	current_trip = Trip.objects.get(id=id)
 	if not user == current_trip.user:
 		return HttpResponseRedirect('/home/#planModal')
 	if request.method == 'POST':

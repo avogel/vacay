@@ -28,6 +28,7 @@ urlpatterns = patterns('',
     (r'^contact/$', views.contact),
     (r'^about/$', views.about),
     (r'^contact/thanks/$', views.contact_thanks),
+    #(r'/$', 'django.views.generic.simple.direct_to_template', {'template': '404.html'}),
 
     # Examples:
     # url(r'^$', 'vacay.views.home', name='home'),

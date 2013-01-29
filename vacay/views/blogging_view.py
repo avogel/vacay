@@ -12,7 +12,10 @@ def blogging(request, id):
 		id = int(id)
 	except ValueError:
 		raise Http404()
-	trip = Trip.objects.get(id=id)
+	try:
+		trip = Trip.objects.get(id=id)
+	except Exception, e:
+		return HttpResponseRedirect('/home/')
 	if not trip.user == request.user:
 		return HttpResponseRedirect('/home/#blogModal')
 	if request.method == 'POST':
