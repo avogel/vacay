@@ -10,24 +10,27 @@
   <!-- Le styles -->
   <link href="{{STATIC_URL}}css/bootstrap.css" rel="stylesheet">
   <link href="{{STATIC_URL}}css/bootstrap-responsive.css" rel="stylesheet">
+  <script src="{{STATIC_URL}}js/jquery-1.8.1.min.js" type="text/javascript"></script>
 
-  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-      <![endif]-->
-      <script src="{{STATIC_URL}}js/jquery-1.8.1.min.js" type="text/javascript"></script>
-    <!-- {% block extrahead %}
-    {% endblock %} -->
-    <script type="text/javascript">
-    // $(function(){
-    // {% block jquery %}
-    // {% endblock %}
-    // });
-// </script>
+  <script type="text/javascript">
+  $(function(){
+    {% block jquery %}
+    {% endblock %}
+  });
+  </script>
 
 </head>
 
 <body>
+  <script>
+  $(document).ready(function () {
+      $('.carousel').carousel({
+          interval: 50000
+      });
+
+      $('.carousel').carousel('cycle');
+  });
+  </script>
   <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
@@ -38,9 +41,6 @@
         </a>
         <a class="brand" href="/home/">Roam</a>
         <div class="nav-collapse collapse">
-          <ul class="nav">
-            <li><a>Discover. Travel. Share.</a></li>
-          </ul>
           <ul class="nav pull-right">
             <li><a href="/accounts/login/">Login</a></li>
             <li><a href="/registration/register/">Register</a></li>
@@ -49,26 +49,63 @@
       </div>
     </div>
   </div>
-  <!-- <div class="container-fluid">
-    <div class="row-fluid">
-      <div class="span9">
-        <h2>Discover. Travel. Share.</h2>
-      </div>
-      <div style="padding-top:25px;"class="span3">
-        <a class="btn btn-primary" href="/accounts/login/">Login</a>
-        &nbsp;&nbsp;
-        <a class="btn btn-secondary" href="/registration/register/">Register</a>
-      </div>
-    </div>
-  </div> -->
-  <div id="myCarousel" class="carousel slide">
+  <div style="width: 100%; height: 100%;" id="myCarousel" class="carousel slide">
     <!-- Carousel items -->
     <div class="carousel-inner">
       <div class="active item">
-        <img src="{{STATIC_URL}}img/edit1.jpg" alt>
+        <img style="max-height: 100%; max-width: 100%; min-height: 100%; min-width: 100%;" src="{{STATIC_URL}}img/c1.jpg" alt>
+        <div class="carousel-caption">
+
+          <h1 class="pull-right" style="color: white;">Discover. Travel. Share.</h1>
+          <h1><a href="/accounts/login/" class="btn-large btn-primary">Login</a>
+          &nbsp;&nbsp;
+          <a href="/accounts/login/" class="btn-large btn-primary">Register</a></h1>
+          
+        </div>
       </div>
       <div class="item">
-        <img src="{{STATIC_URL}}img/louvre.jpg" alt>
+        <img style="max-height: 100%; max-width: 100%; min-height: 100%; min-width: 100%;" src="{{STATIC_URL}}img/c2.jpg" alt>
+        <div class="carousel-caption">
+
+          <h1 class="pull-right" style="color: white;">Discover. Travel. Share.</h1>
+          <h1><a href="/accounts/login/" class="btn-large btn-primary">Login</a>
+          &nbsp;&nbsp;
+          <a href="/accounts/login/" class="btn-large btn-primary">Register</a></h1>
+          
+        </div>
+      </div>
+      <div class="item">
+        <img style="max-height: 100%; max-width: 100%; min-height: 100%; min-width: 100%;" src="{{STATIC_URL}}img/c3.jpg" alt>
+        <div class="carousel-caption">
+
+          <h1 class="pull-right" style="color: white;">Discover. Travel. Share.</h1>
+          <h1><a href="/accounts/login/" class="btn-large btn-primary">Login</a>
+          &nbsp;&nbsp;
+          <a href="/accounts/login/" class="btn-large btn-primary">Register</a></h1>
+          
+        </div>
+      </div>
+      <div class="item">
+        <img style="max-height: 100%; max-width: 100%; min-height: 100%; min-width: 100%;" src="{{STATIC_URL}}img/c4.jpg" alt>
+        <div class="carousel-caption">
+
+          <h1 class="pull-right" style="color: white;">Discover. Travel. Share.</h1>
+          <h1><a href="/accounts/login/" class="btn-large btn-primary">Login</a>
+          &nbsp;&nbsp;
+          <a href="/accounts/login/" class="btn-large btn-primary">Register</a></h1>
+          
+        </div>
+      </div>
+      <div class="item">
+        <img style="max-height: 100%; max-width: 100%; min-height: 100%; min-width: 100%;" src="{{STATIC_URL}}img/c5.jpg" alt>
+        <div class="carousel-caption">
+
+          <h1 class="pull-right" style="color: white;">Discover. Travel. Share.</h1>
+          <h1><a href="/accounts/login/" class="btn-large btn-primary">Login</a>
+          &nbsp;&nbsp;
+          <a href="/accounts/login/" class="btn-large btn-primary">Register</a></h1>
+          
+        </div>
       </div>
     </div>
     <!-- Carousel nav -->
@@ -80,11 +117,5 @@
 <script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script>
 <script src="{{STATIC_URL}}js/jquery.js"></script>
 <script src="{{STATIC_URL}}js/bootstrap.min.js"></script>
-<script>
-$(document).ready(function(){
-  $('.carousel').carousel({
-    interval: 5000
-  });
-});
-</script>
+
 </html>
